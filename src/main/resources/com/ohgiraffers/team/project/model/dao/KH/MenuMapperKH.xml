@@ -5,4 +5,49 @@
 
 <mapper namespace="com.ohgiraffers.team.project.model.dao.KH.MenuMapperKH">
 
+    <resultMap id="MenuMapper" type="com.ohgiraffers.team.project.model.dto.MenuDTO">
+        <id property="menuCode" column="MENU_CODE"/>
+        <result property="menuName" column="MENU_NAME"/>
+        <result property="menuPrice" column="MENU_PRICE"/>
+        <result property="categoryCode" column="CATEGORY_CODE"/>
+        <result property="orderableStatus" column="ORDERABLE_STATUS"/>
+    </resultMap>
+
+    <select id="selectAllMenu" resultMap="MenuMapper">
+        SELECT
+            *
+        FROM
+            TBL_MENU
+    </select>
+
+    <select id="selectCategory" resultMap="MenuMapper">
+        SELECT
+            *
+        FROM
+            TBL_MENU
+        WHERE
+            CATEGORY_CODE = #{categoryCode}
+    </select>
+
+    <insert id="insertNewMenu" parameterType="com.ohgiraffers.team.project.model.dto.MenuDTO">
+        INSERT INTO TBL_MENU(MENU_NAME, MENU_PRICE, CATEGORY_CODE, ORDERABLE_STATUS)
+        VALUES (#{ menuName }, #{ menuPrice }, #{ categoryCode }, 'Y')
+    </insert>
+
+    <update id="updateMenu" parameterType="com.ohgiraffers.team.project.model.dto.MenuDTO">
+        UPDATE TBL_MENU
+        SET
+        MENU_NAME = #{menuName},
+        MENU_PRICE = #{menuPrice},
+        CATEGORY_CODE = #{categoryCode},
+        ORDERABLE_STATUS = #{orderableStatus}
+        WHERE
+        MENU_CODE = #{menuCode}
+    </update>
+
+    <delete id="deleteMenu" parameterType="com.ohgiraffers.team.project.model.dto.MenuDTO">
+        DELETE FROM TBL_MENU
+        WHERE
+            MENU_CODE = #{ menuCode }
+    </delete>
 </mapper>

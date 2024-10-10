@@ -13,5 +13,5 @@ public class MenuControllerGN {
         this.menuService = new MenuServiceGN();
         this.printResult = new PrintResultGN();
     }
-    
+
 }
