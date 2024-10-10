@@ -5,4 +5,66 @@
 
 <mapper namespace="com.ohgiraffers.team.project.model.dao.GN.MenuMapperGN">
 
+    <resultMap id="menuMapperResultMap" type="com.ohgiraffers.team.project.model.dto.MenuDTOgyunamMenu">
+        <id property="menuCode" column="MENU_CODE"/>
+        <id property="categoryCode" column="CATEGORY_CODE"/>
+        <result property="menuName" column="MENU_NAME"/>
+        <result property="menuPrice" column="MENU_PRICE"/>
+        <result property="orderableStatus" column="ORDERABLE_STATUS"/>
+    </resultMap>
+
+    <resultMap id="categoryMapperResultMap" type="com.ohgiraffers.team.project.model.dto.MenuDTOgyunamCategory">
+        <id property="categoryCode" column="CATEGORY_CODE"/>
+        <result property="categoryName" column="CATEGORY_NAME"/>
+        <result property="refCategoryCode" column="REF_CATEGORY_CODE"/>
+    </resultMap>
+
+    <select id="selectAllMenu" resultMap="menuMapperResultMap">
+        SELECT
+            *
+        FROM
+            TBL_MENU;
+    </select>
+
+    <select id="selectAllCategory" resultMap="categoryMapperResultMap">
+        SELECT
+            *
+        FROM
+            TBL_CATEGORY;
+    </select>
+
+    <select id="selectCodeMenu" resultMap="menuMapperResultMap">
+        SELECT
+            *
+        FROM
+            TBL_MENU
+        WHERE
+            MENU_CODE = #{menuCode};
+    </select>
+
+    <select id="selectCodeCategory" resultMap="categoryMapperResultMap">
+        SELECT
+            *
+        FROM
+            TBL_CATEGORY
+        WHERE
+            CATEGORY_CODE = #{categoryCode}
+    </select>
+
+    <insert id="insertNewMenu" parameterType="com.ohgiraffers.team.project.model.dto.MenuDTOgyunamMenu">
+        INSERT INTO TBL_MENU
+        (MENU_NAME , MENU_PRICE , CATEGORY_CODE, ORDERABLE_STATUS)
+        VALUES
+        (#{menuName}, #{menuPrice}, #{categoryCode}, 'Y')
+    </insert>
+
+    <update id="updateCategoryCode" parameterType="com.ohgiraffers.team.project.model.dto.MenuDTOgyunamCategory">
+        UPDATE TBL_CATEGORY
+        SET
+             CATEGORY_NAME = #{categoryName}
+            ,REF_CATEGORY_CODE = #{refCategoryCode}
+        WHERE
+            CATEGORY_CODE = #{categoryCode}
+    </update>
+
 </mapper>
