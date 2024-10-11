@@ -103,6 +103,19 @@ public class MenuControllerGN {
             printResultGN.errorMessage("errorUpdate");
         }
     }
+
+    public void deleteMenuCode(Map<String, String> parameter) {
+        int result = Integer.parseInt(parameter.get("menuCode"));
+
+        MenuDTOgyunamMenu menuDTOgyunamMenu = new MenuDTOgyunamMenu();
+        menuDTOgyunamMenu.setMenuCode(result);
+
+        if (menuServiceGN.deleteMenuCode(menuDTOgyunamMenu)) {
+            printResultGN.successMessage("successDelete");
+        } else {
+            printResultGN.errorMessage("errorDelete");
+        }
+    }
 }
 
 

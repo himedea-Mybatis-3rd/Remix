@@ -67,4 +67,13 @@
             CATEGORY_CODE = #{categoryCode}
     </update>
 
+    <delete id="deleteMenuCode" parameterType="com.ohgiraffers.team.project.model.dto.MenuDTOgyunamMenu">
+        DELETE
+        FROM
+            TBL_MENU
+        WHERE
+            MENU_CODE = #{menuCode}
+
+    </delete>
+
 </mapper>

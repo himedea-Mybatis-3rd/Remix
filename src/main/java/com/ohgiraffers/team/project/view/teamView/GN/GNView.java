@@ -23,7 +23,7 @@ public class GNView {
             System.out.println("4. select - category_code로 카테고리 테이블 조회하기");
             System.out.println("5. insert - 신규 메뉴 등록 (menu_name , menu_price, category_code)");
             System.out.println("6. update - category_code로 수정 (category_name 입력 , ref_category_code)");
-            System.out.println("7. delete - category_code로 삭제하기");
+            System.out.println("7. delete - menu_code로 삭제하기");
             System.out.println("==============================================================");
             System.out.print("실행할 메뉴를 선택해 주세요 : ");
             int result = sc.nextInt();
@@ -40,6 +40,8 @@ public class GNView {
                 case 5 : menuControllerGN.insertNewMenu(newMenu());
                 break;
                 case 6 : menuControllerGN.updateCategory(updateCategory());
+                break;
+                case 7 : menuControllerGN.deleteMenuCode(deleteMenuCode());
             }
 
         } while (true);
@@ -95,6 +97,17 @@ public class GNView {
         parameter.put("categoryCode" , categoryCode);
         parameter.put("categoryName" , categoryName);
         parameter.put("refCategoryCode" , refCategoryCode);
+
+        return parameter;
+    }
+
+    private static Map<String, String> deleteMenuCode () {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("삭제할 메뉴코드를 입력해 주세요 :");
+        String menuCode = sc.nextLine();
+
+        Map<String, String> parameter = new HashMap<>();
+        parameter.put("menuCode", menuCode);
 
         return parameter;
     }

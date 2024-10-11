@@ -18,4 +18,6 @@ public interface MenuMapperGN {
     int insertNewMenu(MenuDTOgyunamMenu menuDTOgyunamMenu);
 
     int updateCategoryCode(MenuDTOgyunamCategory menuDTOgyunamCategory);
+
+    int deleteMenuCode(MenuDTOgyunamMenu menuDTOgyunamMenu);
 }

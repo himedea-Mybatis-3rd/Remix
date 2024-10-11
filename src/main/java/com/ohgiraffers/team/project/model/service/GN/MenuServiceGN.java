@@ -81,6 +81,21 @@ public class MenuServiceGN {
         }
         return (result > 0 ? true : false);
     }
+
+    public boolean deleteMenuCode(MenuDTOgyunamMenu menuDTOgyunamMenu) {
+        SqlSession sqlSession = getSqlSession();
+
+        menuMapperGN = sqlSession.getMapper(MenuMapperGN.class);
+
+        int result = menuMapperGN.deleteMenuCode(menuDTOgyunamMenu);
+
+        if (result > 0) {
+            sqlSession.commit();
+        } else {
+            sqlSession.rollback();
+        }
+        return result > 0 ? true : false;
+    }
 }
 
 

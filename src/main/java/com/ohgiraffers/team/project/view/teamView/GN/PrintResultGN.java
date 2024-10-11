@@ -14,9 +14,15 @@ public class PrintResultGN {
         switch (selectAllMenu) {
             case "successInsert" :
                 successMessage = "신규 메뉴 추가가 완료되었습니다.";
+                break;
             case "successUpdate" :
                 successMessage = "업데이트가 완료되었습니다.";
+                break;
+            case "successDelete" :
+                successMessage = "메뉴 코드 삭제가 완료되었습니다.";
+                break;
         }
+        System.out.println(successMessage);
     }
 
     public void errorMessage(String errorCode) {
@@ -25,18 +31,27 @@ public class PrintResultGN {
         switch (errorCode) {
             case "errorSelectAllMenu" :
                 errorMessage = "메뉴 전체 조회에 실패하였습니다.";
+                break;
             case "errorSelectAllCategory" :
                 errorMessage = "카테고리 전체 조회에 실패하였습니다.";
+                break;
             case "errorCodeMenu" :
                 errorMessage = "해당 메뉴 코드로 조회를 실패하였습니다.";
+                break;
             case "errorCodeCategory" :
                 errorMessage = "해당 카테고리 코드로 조회를 실패하였습니다.";
+                break;
             case "errorInsert" :
                 errorMessage = "신규 메뉴 추가에 실패하였습니다.";
+                break;
             case "errorUpdate" :
                 errorMessage = "업데이트에 실패하였습니다.";
+                break;
+            case "errorDelete" :
+                errorMessage = "메뉴 코드 삭제에 실패하였습니다.";
+                break;
         }
-
+        System.out.println(errorMessage);
     }
 
     public void selectAllMenu(List<MenuDTOgyunamMenu> menuList) {
